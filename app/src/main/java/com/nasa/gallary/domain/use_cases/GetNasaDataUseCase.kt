@@ -7,9 +7,7 @@ import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 
-class GetNasaDataUseCase constructor(
-    private val repository: NasaRepository
-) {
+class GetNasaDataUseCase(private val repository: NasaRepository) {
     fun getNasaData(forceNetwork : Boolean = false) = flow {
         emit(Resource.Loading)
         val repositories = repository.getNasaData(forceNetwork)
