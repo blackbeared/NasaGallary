@@ -13,7 +13,7 @@ abstract class BaseFragment<T : ViewDataBinding>(@LayoutRes val resId: Int) : Fr
 
     lateinit var binding: T
 
-    abstract fun init() : Boolean
+    abstract fun init()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = DataBindingUtil.inflate(inflater, resId, container, false) as T

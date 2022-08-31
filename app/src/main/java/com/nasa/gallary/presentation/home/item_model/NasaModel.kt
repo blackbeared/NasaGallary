@@ -1,11 +1,14 @@
 package com.nasa.gallary.presentation.home.item_model
 
 import NasaData
+import android.content.Intent
+import android.view.View
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
 import com.nasa.gallary.R
 import com.nasa.gallary.app.base.BaseModel
+import com.nasa.gallary.presentation.details.view.DetailActivity
 
 class NasaModel(
     val copyright: String?,
@@ -17,6 +20,10 @@ class NasaModel(
     val title: String?,
     val url: String?
 ): BaseModel(R.layout.nasa_item){
+
+    fun onClick(view: View){
+        view.context.startActivity(Intent(view.context, DetailActivity::class.java))
+    }
 
     companion object {
         @BindingAdapter("imageUrl")

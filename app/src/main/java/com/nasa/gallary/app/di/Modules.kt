@@ -8,6 +8,7 @@ import com.nasa.gallary.data.data_sources.remote.RemoteNasaDatasource
 import com.nasa.gallary.data.repository.NasaRepositoryImpl
 import com.nasa.gallary.domain.repository.NasaRepository
 import com.nasa.gallary.domain.use_cases.GetNasaDataUseCase
+import com.nasa.gallary.presentation.details.viewmodel.DetailViewModel
 import com.nasa.gallary.presentation.home.viewmodel.HomeViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
@@ -35,5 +36,6 @@ object Modules {
 
     val viewModel = module {
         viewModel { HomeViewModel(get()) }
+        viewModel { DetailViewModel(get()) }
     }
 }

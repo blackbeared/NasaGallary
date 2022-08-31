@@ -11,6 +11,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:onClick="@{(v) -> nasaModel.onClick(v) }"
         android:padding="@dimen/_1sdp">
 
         <com.nasa.gallary.presentation.layouts.SquareImageLayout

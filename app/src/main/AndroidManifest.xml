@@ -27,6 +27,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".presentation.details.view.DetailActivity"
+            android:theme="@style/Theme.NasaGallary.NoActionBar"/>
     </application>
 
 </manifest>
