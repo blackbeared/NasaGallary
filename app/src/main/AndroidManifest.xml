@@ -17,7 +17,7 @@
         android:theme="@style/Theme.NasaGallary"
         tools:targetApi="31">
         <activity
-            android:name=".presentation.view.MainActivity"
+            android:name="com.nasa.gallary.presentation.home.view.MainActivity"
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.NasaGallary.NoActionBar">

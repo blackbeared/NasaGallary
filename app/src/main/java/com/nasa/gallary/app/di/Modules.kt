@@ -8,7 +8,7 @@ import com.nasa.gallary.data.data_sources.remote.RemoteNasaDatasource
 import com.nasa.gallary.data.repository.NasaRepositoryImpl
 import com.nasa.gallary.domain.repository.NasaRepository
 import com.nasa.gallary.domain.use_cases.GetNasaDataUseCase
-import com.nasa.gallary.presentation.viewmodel.HomeViewModel
+import com.nasa.gallary.presentation.home.viewmodel.HomeViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 

@@ -1,38 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
+        <variable
+            name="homeViewModel"
+            type="com.nasa.gallary.presentation.home.viewmodel.HomeViewModel" />
     </data>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".presentation.view.MainActivity">
+        android:background="@color/black"
+        tools:context=".presentation.home.view.MainActivity">
 
-        <com.google.android.material.appbar.AppBarLayout
-            android:id="@+id/appBar"
+        <com.nasa.gallary.presentation.layouts.GridRecyclerView
+            android:id="@+id/rvNasaImages"
+            android:clipToPadding="false"
+            android:paddingTop="@dimen/_80sdp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+        <TextView
+            android:id="@+id/tvTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:theme="@style/Theme.NasaGallary.AppBarOverlay">
+            android:padding="@dimen/_16sdp"
+            android:text="@string/nasa_gallary"
+            android:textColor="@color/white"
+            android:shadowColor="@color/black"
+            android:shadowDx="2"
+            android:shadowDy="2"
+            android:shadowRadius="4"
+            android:textSize="@dimen/_30sdp" />
 
-            <androidx.appcompat.widget.Toolbar
-                android:id="@+id/toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                android:background="?attr/colorPrimary"
-                app:popupTheme="@style/Theme.NasaGallary.PopupOverlay" />
-
-        </com.google.android.material.appbar.AppBarLayout>
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvNasaImages"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-            android:layout_below="@+id/appBar"/>
 
     </RelativeLayout>
 </layout>

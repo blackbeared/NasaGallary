@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="nasaModel"
+            type="com.nasa.gallary.presentation.home.item_model.NasaModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/_1sdp">
+
+        <com.nasa.gallary.presentation.layouts.SquareImageLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="centerCrop"
+            app:imageUrl="@{nasaModel.hdurl}"/>
+
+    </LinearLayout>
+</layout>
