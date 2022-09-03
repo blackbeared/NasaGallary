@@ -4,6 +4,6 @@ import NasaData
 
 interface NasaRepository {
 
-    suspend fun getNasaData(forceNetwork: Boolean): List<NasaData>
+    suspend fun getNasaData(forceNetwork: Boolean): List<NasaData>?
 
 }

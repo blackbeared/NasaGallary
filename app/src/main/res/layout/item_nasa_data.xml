@@ -4,6 +4,9 @@
 
     <data>
         <variable
+            name="index"
+            type="java.lang.Integer" />
+        <variable
             name="nasaModel"
             type="com.nasa.gallary.presentation.home.item_model.NasaModel" />
     </data>
@@ -11,14 +14,16 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="@{(v) -> nasaModel.onClick(v) }"
+        android:onClick="@{(v) -> nasaModel.onClick(v, index) }"
         android:padding="@dimen/_1sdp">
 
-        <com.nasa.gallary.presentation.layouts.SquareImageLayout
+        <com.nasa.gallary.presentation.custom.SquareImageLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:scaleType="centerCrop"
-            app:imageUrl="@{nasaModel.hdurl}"/>
+            android:transitionName="@{nasaModel.title}"
+            android:tag="@{nasaModel.title}"
+            app:imageThumbnail="@{nasaModel.url}"/>
 
     </LinearLayout>
 </layout>

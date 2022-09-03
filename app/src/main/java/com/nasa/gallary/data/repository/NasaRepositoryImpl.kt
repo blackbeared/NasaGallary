@@ -1,15 +1,16 @@
 package com.nasa.gallary.data.repository
 
 import NasaData
+import com.nasa.gallary.app.common.Resource
 import com.nasa.gallary.data.data_sources.local.LocalNasaDatasource
 import com.nasa.gallary.data.data_sources.remote.RemoteNasaDatasource
 import com.nasa.gallary.domain.repository.NasaRepository
 
-class NasaRepositoryImpl(val localNasaDatasource: LocalNasaDatasource, private val remoteNasaDatasource: RemoteNasaDatasource) : NasaRepository{
+class NasaRepositoryImpl(private val localNasaDatasource: LocalNasaDatasource, private val remoteNasaDatasource: RemoteNasaDatasource) : NasaRepository{
 
-    override suspend fun getNasaData(forceNetwork: Boolean): List<NasaData> {
+    override suspend fun getNasaData(forceNetwork: Boolean): List<NasaData>? {
         if(!forceNetwork)
-            return localNasaDatasource.getNasaData()
-        return remoteNasaDatasource.getNasaData()
+            return localNasaDatasource.getNasaData(forceNetwork)
+        return remoteNasaDatasource.getNasaData(forceNetwork)
     }
 }

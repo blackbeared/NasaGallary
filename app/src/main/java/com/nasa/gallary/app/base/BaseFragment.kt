@@ -9,6 +9,8 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 
+// To be used to lazy inject global listeners or utils which
+// require everywhere e.g. PrefUtils()
 abstract class BaseFragment<T : ViewDataBinding>(@LayoutRes val resId: Int) : Fragment() {
 
     lateinit var binding: T

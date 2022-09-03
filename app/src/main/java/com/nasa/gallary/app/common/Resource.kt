@@ -1,5 +1,6 @@
 package com.nasa.gallary.app.common
 
+import com.nasa.gallary.app.utils.NetworkState
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.transform
 
@@ -25,12 +26,21 @@ fun <T> Flow<Resource<T>>.doOnSuccess(action: suspend (T) -> Unit): Flow<Resourc
         return@transform emit(value)
     }
 
-fun <T> Flow<Resource<T>>.doOnStatusChanged(action: suspend (Status) -> Unit): Flow<Resource<T>> =
+
+fun <T> Flow<Resource<T>>.doOnError(action: suspend (Throwable) -> Unit): Flow<Resource<T>> =
+    transform { value ->
+        if (value is Resource.Error) {
+            action(value.exception)
+        }
+        return@transform emit(value)
+    }
+
+fun <T> Flow<Resource<T>>.doOnStatusChanged(action: suspend (NetworkState, String?) -> Unit): Flow<Resource<T>> =
     transform { value ->
         when (value) {
-            is Resource.Success -> action(Status.Content)
-            is Resource.Error -> action(Status.Error(value.exception))
-            Resource.Loading -> action(Status.Loading)
+            is Resource.Success -> action(NetworkState.SUCCESS, null)
+            is Resource.Error -> action(NetworkState.ERROR, value.exception.localizedMessage)
+            Resource.Loading -> action(NetworkState.LOADING, null)
         }
         return@transform emit(value)
     }

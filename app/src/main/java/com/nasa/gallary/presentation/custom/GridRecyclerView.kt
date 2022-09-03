@@ -1,4 +1,4 @@
-package com.nasa.gallary.presentation.layouts
+package com.nasa.gallary.presentation.custom
 
 import android.content.Context
 import android.util.AttributeSet

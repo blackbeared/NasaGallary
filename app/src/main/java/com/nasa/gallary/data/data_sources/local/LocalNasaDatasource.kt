@@ -12,7 +12,7 @@ import java.io.IOException
 class LocalNasaDatasource(private val context: Application) : NasaDatasource {
 
     @Suppress("BlockingMethodInNonBlockingContext")
-    override suspend fun getNasaData(): List<NasaData> {
+    override suspend fun getNasaData(forceNetwork: Boolean): List<NasaData>? {
         lateinit var jsonString: String
         return try {
             jsonString = context.assets.open("nasa_data.json")

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
         <variable
@@ -8,30 +7,10 @@
             type="com.nasa.gallary.presentation.details.viewmodel.DetailViewModel" />
     </data>
 
-    <RelativeLayout
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/vpNasaImages"
+        android:background="@color/color_background"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/black"
-        tools:context=".presentation.home.view.MainActivity">
+        android:layout_height="match_parent"/>
 
-        <androidx.viewpager.widget.ViewPager
-            android:id="@+id/vpNasaImages"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
-
-        <TextView
-            android:id="@+id/tvTitle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="@dimen/_16sdp"
-            android:text="@string/nasa_gallary"
-            android:textColor="@color/white"
-            android:shadowColor="@color/black"
-            android:shadowDx="2"
-            android:layout_alignParentBottom="true"
-            android:shadowDy="2"
-            android:shadowRadius="4"
-            android:textSize="@dimen/_30sdp" />
-
-    </RelativeLayout>
 </layout>

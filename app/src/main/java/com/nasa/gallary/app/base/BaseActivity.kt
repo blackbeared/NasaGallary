@@ -7,6 +7,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 
+
+// To be used to lazy inject global listeners or utils which
+// require everywhere e.g. PrefUtils()
 abstract class BaseActivity<T : ViewDataBinding>(@LayoutRes val resId: Int) : AppCompatActivity() {
 
     lateinit var binding: T

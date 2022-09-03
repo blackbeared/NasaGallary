@@ -1,11 +1,11 @@
-package com.nasa.gallary.presentation.layouts
+package com.nasa.gallary.presentation.custom
 
 import android.content.Context
 import android.util.AttributeSet
 import androidx.appcompat.widget.AppCompatImageView
 
 /**
- * TODO: document your custom view class.
+ * TODO: To create square grid items.
  */
 class SquareImageLayout : AppCompatImageView {
 

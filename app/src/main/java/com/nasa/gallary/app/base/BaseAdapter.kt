@@ -14,11 +14,13 @@ import com.nasa.gallary.presentation.home.item_model.NasaModel
 class BaseAdapter<T : BaseModel>(
     lifecycleOwner: LifecycleOwner,
     private val items: MutableLiveData<List<T>>,
-    private val callback: (GenericVH, T) -> Unit,
+    private val callback: (GenericVH, T, position: Int) -> Unit,
 ) : RecyclerView.Adapter<BaseAdapter.GenericVH>() {
 
     init {
         items.observe(lifecycleOwner) {
+            // Redesign adapter to support Pagination and
+            // DiffUtils Callback so that only items that are being changed can be updated
             notifyDataSetChanged()
         }
     }
@@ -40,7 +42,7 @@ class BaseAdapter<T : BaseModel>(
 
     override fun onBindViewHolder(holder: GenericVH, position: Int) {
         items.value?.get(position)?.let {
-            callback.invoke(holder, it)
+            callback.invoke(holder, it, position)
         }
     }
 
