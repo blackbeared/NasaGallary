@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable
+            name="detailViewModel"
+            type="com.nasa.gallary.presentation.details.viewmodel.DetailViewModel" />
+    </data>
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/vpNasaImages"
+        android:background="@color/color_background"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+</layout>

@@ -1,25 +1,98 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
+
     <!-- Base application theme. -->
-    <style name="Theme.NasaGallary" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+    <style name="Theme.NasaGallary" parent="Base.MyTheme">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/purple_500</item>
-        <item name="colorPrimaryVariant">@color/purple_700</item>
-        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorPrimary">@color/color_primary</item>
+        <item name="colorPrimaryVariant">@color/color_primary_variant</item>
+        <item name="colorOnPrimary">@color/color_on_primary</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/teal_200</item>
-        <item name="colorSecondaryVariant">@color/teal_700</item>
+        <item name="colorSecondary">@color/color_on_secondary</item>
+        <item name="colorSecondaryVariant">@color/color_secondary_variant</item>
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
+    </style>
+
+
+    <style name="Theme.NasaGallary.Black">
+        <item name="colorSurface">@color/black</item>
+        <item name="colorOnSurface">@color/white</item>
+        <item name="android:colorBackground">@color/black</item>
+        <item name="android:statusBarColor">@color/black</item>
+        <item name="android:navigationBarColor">@color/black</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:windowLightNavigationBar" tools:ignore="NewApi">false</item>
     </style>
 
     <style name="Theme.NasaGallary.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
+        <item name="android:windowContentTransitions">true</item>
     </style>
 
     <style name="Theme.NasaGallary.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="Theme.NasaGallary.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <!--Base custom theme which will be shared between both light and dark theme variants-->
+    <style name="Base.MyTheme" parent="Base.MaterialThemeBuilder">
+        <!--Material color attributes -->
+        <item name="colorPrimary">@color/color_primary</item>
+        <item name="colorPrimaryVariant">@color/color_primary_variant</item>
+        <item name="colorSecondary">@color/color_secondary</item>
+        <item name="colorSecondaryVariant">@color/color_secondary_variant</item>
+
+        <item name="android:colorBackground">@color/color_background</item>
+        <item name="colorSurface">@color/color_surface</item>
+        <item name="colorError">@color/color_error</item>
+
+        <item name="colorOnPrimary">@color/color_on_primary</item>
+        <item name="colorOnSecondary">@color/color_on_secondary</item>
+        <item name="colorOnBackground">@color/color_on_background</item>
+        <item name="colorOnSurface">@color/color_on_surface</item>
+        <item name="colorOnError">@color/color_on_error</item>
+
+        <!--Material type attributes-->
+        <item name="textAppearanceHeadline1">@style/TextAppearance.MyTheme.Headline1</item>
+        <item name="textAppearanceHeadline2">@style/TextAppearance.MyTheme.Headline2</item>
+        <item name="textAppearanceHeadline3">@style/TextAppearance.MyTheme.Headline3</item>
+        <item name="textAppearanceHeadline4">@style/TextAppearance.MyTheme.Headline4</item>
+        <item name="textAppearanceHeadline5">@style/TextAppearance.MyTheme.Headline5</item>
+        <item name="textAppearanceHeadline6">@style/TextAppearance.MyTheme.Headline6</item>
+        <item name="textAppearanceSubtitle1">@style/TextAppearance.MyTheme.Subtitle1</item>
+        <item name="textAppearanceSubtitle2">@style/TextAppearance.MyTheme.Subtitle2</item>
+        <item name="textAppearanceBody1">@style/TextAppearance.MyTheme.Body1</item>
+        <item name="textAppearanceBody2">@style/TextAppearance.MyTheme.Body2</item>
+        <item name="textAppearanceButton">@style/TextAppearance.MyTheme.Button</item>
+        <item name="textAppearanceCaption">@style/TextAppearance.MyTheme.Caption</item>
+        <item name="textAppearanceOverline">@style/TextAppearance.MyTheme.Overline</item>
+
+        <!--Component styles-->
+        <item name="toolbarStyle">@style/Widget.MyTheme.Toolbar</item>
+        <item name="materialButtonStyle">@style/Widget.MyTheme.Button</item>
+        <item name="buttonOutlineStyle">@style/Widget.MyTheme.OutlinedButton</item>
+        <item name="buttonTextStyle">@style/Widget.MyTheme.TextButton</item>
+        <item name="toolbarNavigationButtonStyle">@style/Widget.MyTheme.Toolbar.Navigation.Tinted</item>
+    </style>
+
+    <style name="Base.MaterialThemeBuilder" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="alphaEmphasisHigh">@dimen/alpha_emphasis_high</item>
+        <item name="alphaEmphasisMedium">@dimen/alpha_emphasis_medium</item>
+        <item name="alphaEmphasisDisabled">@dimen/alpha_emphasis_disabled</item>
+
+        <item name="android:statusBarColor">?colorSurface</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:navigationBarColor">@color/navigation_bar_color</item>
+        <item name="android:windowLightNavigationBar" tools:ignore="NewApi">
+            @bool/use_light_navigation_bar
+        </item>
+        <item name="android:navigationBarDividerColor" tools:ignore="NewApi">@color/transparent
+        </item>
+
+        <!--Remap legacy AppCompat attributes to MaterialComponent attributes-->
+        <item name="colorPrimaryDark">?colorPrimaryVariant</item>
+        <item name="colorAccent">?colorPrimaryVariant</item>
+    </style>
 </resources>

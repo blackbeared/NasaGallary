@@ -1,34 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <com.google.android.material.appbar.AppBarLayout
+    <data>
+
+        <import type="android.view.View" />
+
+        <import type="com.nasa.gallary.app.utils.NetworkState" />
+
+        <variable
+            name="homeViewModel"
+            type="com.nasa.gallary.presentation.home.viewmodel.HomeViewModel" />
+    </data>
+
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/Theme.NasaGallary.AppBarOverlay">
+        android:layout_height="match_parent"
+        android:background="@color/color_background"
+        tools:context=".presentation.home.view.MainActivity">
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            app:popupTheme="@style/Theme.NasaGallary.PopupOverlay" />
+            android:layout_height="match_parent"
+            android:visibility="@{ homeViewModel.ownerStatus != NetworkState.SUCCESS ? View.VISIBLE : View.GONE }">
 
-    </com.google.android.material.appbar.AppBarLayout>
+            <com.google.android.material.progressindicator.CircularProgressIndicator
+                android:id="@+id/pbLoadNasaData"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"
+                android:indeterminate="true"
+                android:visibility="@{ homeViewModel.ownerStatus == NetworkState.LOADING ? View.VISIBLE : View.GONE}" />
 
-    <include layout="@layout/content_main" />
+            <TextView
+                android:id="@+id/errorText"
+                style="@style/TextAppearance.Material3.BodyLarge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                android:paddingHorizontal="@dimen/_16sdp"
+                android:text="@{ homeViewModel.errorString }"
+                android:textColor="@color/color_on_surface"
+                android:visibility="@{ homeViewModel.ownerStatus == NetworkState.ERROR ? View.VISIBLE : View.GONE}"
+                tools:text="Error : Network Unavailable" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_marginEnd="@dimen/fab_margin"
-        android:layout_marginBottom="16dp"
-        app:srcCompat="@android:drawable/ic_dialog_email" />
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/errorText"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:onClick="@{(v) ->  homeViewModel.initData()  }"
+                android:text="@string/btn_reload"
+                android:visibility="@{ homeViewModel.ownerStatus == NetworkState.ERROR ? View.VISIBLE : View.GONE}" />
 
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+        </RelativeLayout>
+
+        <com.nasa.gallary.presentation.custom.GridRecyclerView
+            android:id="@+id/rvNasaImages"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:paddingTop="@dimen/_80sdp"
+            android:visibility="@{ homeViewModel.ownerStatus == NetworkState.SUCCESS ? View.VISIBLE : View.GONE}" />
+
+        <TextView
+            android:id="@+id/tvTitle"
+            style="@style/TextAppearance.MaterialComponents.Headline3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/img_header_background"
+            android:paddingHorizontal="@dimen/_16sdp"
+            android:paddingTop="@dimen/_24sdp"
+            android:paddingBottom="@dimen/_16sdp"
+            android:text="@string/nasa_gallary"
+            android:textColor="@color/color_on_background" />
+
+    </RelativeLayout>
+</layout>
